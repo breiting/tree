@@ -69,7 +69,7 @@ func ExampleDeserialize() {
 	relations = append(relations, Relation{ID: "1"})
 
 	t, err := Deserialize(relations)
-	f, _ := os.Create("tree.dot")
+	f, _ := os.Create("sample.dot")
 	defer f.Close()
 	err = WriteToDot(t, f)
 	if err != nil {

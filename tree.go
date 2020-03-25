@@ -1,5 +1,4 @@
-// package tree
-// The tree package is a very simple package to work with trees. You can easily deserialize a parent
+// Package tree is a very simple package to work with trees. You can easily deserialize a parent
 // to child relationship and also dump the result into a .dot file (graphviz).
 package tree
 
@@ -158,7 +157,7 @@ func writeNodeRelationship(n *Node, w io.Writer) {
 		return
 	}
 	for _, v := range n.Children {
-		fmt.Fprintf(w, "%s -> %s;\n", n.ID, v.ID)
+		fmt.Fprintf(w, "  %s -> %s;\n", n.ID, v.ID)
 		writeNodeRelationship(v, w)
 	}
 }
