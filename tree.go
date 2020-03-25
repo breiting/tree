@@ -157,7 +157,7 @@ func writeNodeRelationship(n *Node, w io.Writer) {
 		return
 	}
 	for _, v := range n.Children {
-		fmt.Fprintf(w, "  %s -> %s;\n", n.ID, v.ID)
+		fmt.Fprintf(w, "  \"%s\" -> \"%s\";\n", n.ID, v.ID)
 		writeNodeRelationship(v, w)
 	}
 }
@@ -175,7 +175,7 @@ func writeNodeShape(n *Node, w io.Writer) {
 	if n.Attributes["shape"] != "" {
 		shape = n.Attributes["shape"]
 	}
-	fmt.Fprintf(w, "  %s [shape=%s,style=filled,color=%s]\n", n.ID, shape, color)
+	fmt.Fprintf(w, "  \"%s\" [shape=%s,style=filled,color=%s]\n", n.ID, shape, color)
 	for _, v := range n.Children {
 		writeNodeShape(v, w)
 	}
