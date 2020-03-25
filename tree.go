@@ -129,26 +129,13 @@ func FindByIDDFS(node *Node, id string) *Node {
 func WriteToDot(node *Node, w io.Writer) error {
 
 	fmt.Fprintf(w, "digraph {\n")
+	fmt.Fprintf(w, "  node [fontname=\"Helvetica\",fontsize=10]\n")
 
 	writeNodeShape(node, w)
 	writeNodeRelationship(node, w)
 
 	fmt.Fprintln(w, "}")
 	return nil
-}
-
-// String dumps a tree
-func (t Node) String() string {
-
-	if &t == nil {
-		return "()"
-	}
-	s := ""
-	for _, v := range t.Children {
-		s += v.String() + " "
-	}
-	s += fmt.Sprint(t.Name)
-	return "(" + s + ")"
 }
 
 func writeNodeRelationship(n *Node, w io.Writer) {
